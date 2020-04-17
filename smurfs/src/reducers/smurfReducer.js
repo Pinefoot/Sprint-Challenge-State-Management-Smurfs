@@ -9,7 +9,7 @@ import {
   } from "../actions/smurfActions";
 
   const initialState = {
-      smurfs: '',
+      smurfs: [],
       fetchingSmurfs: false,
       addingSmurfs: false,
       error: '',

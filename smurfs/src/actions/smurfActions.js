@@ -17,3 +17,7 @@ export const getSmurfs = () => dispatch => {
         dispatch({type:FETCH_SMURF_FAIL, payload: err.res});
     })
 }
+
+export const postSmurfs = newSmurf => dispatch =>{
+    
+}
