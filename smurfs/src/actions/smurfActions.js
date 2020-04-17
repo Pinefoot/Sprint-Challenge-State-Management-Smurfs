@@ -10,10 +10,11 @@ export const getSmurfs = () => dispatch => {
     dispatch({type: FETCH_SMURF_START})
     axios.get('http://localhost:3333/smurfs')
     .then(response =>{
-        console.log('api data:', response.data);
-        dispatch({ type: FETCH_SMURF_SUCCESS, payload: response.data.results})//might need another level deeper, once I have it set up I'll be able to see what data looks like.
+        console.log('api data:', response);
+        dispatch({ type: FETCH_SMURF_SUCCESS, payload: response.data})
     })
     .catch(err =>{
+        console.log('axios get error:',err)
         dispatch({type:FETCH_SMURF_FAIL, payload: err.res});
     })
 }
@@ -21,7 +22,7 @@ export const getSmurfs = () => dispatch => {
 export const postSmurfs = newSmurf => dispatch =>{
     axios.post('http://localhost:3333/smurfs', newSmurf)
     .then(response =>{
-        dispatch({type: POST_SMURF_SUCCESS, payload: response.data.results})
+        dispatch({type: POST_SMURF_SUCCESS, payload: response.data})
     }).catch(err=>{
         dispatch({type: POST_SMURF_FAIL, payload: err.response});
     })
