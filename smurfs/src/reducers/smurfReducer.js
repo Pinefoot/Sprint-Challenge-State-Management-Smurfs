@@ -3,16 +3,19 @@ import {
     FETCH_SMURF_SUCCESS,
     FETCH_SMURF_FAIL,
     POST_SMURF_SUCCESS,
-    POST_SMURF_FAIL,
-    getSmurfs,
-    postSmurfs
+    POST_SMURF_FAIL
+    
   } from "../actions/smurfActions";
 
   const initialState = {
-      smurfs: [],
-      fetchingSmurfs: false,
-      addingSmurfs: false,
-      error: '',
+    
+        
+          name: [],
+          fetchingSmurfs: false,
+          addingSmurfs: false,
+          error:''
+        
+      
   };
 
   const smurfReducer = (state = initialState, action)=>{
@@ -26,7 +29,7 @@ import {
             console.log('FetcherSuccess:', action)
             return{
                 ...state,
-                smurfs: action.payload,
+                name: action.payload,
                 fetchingSmurfs: false,
                 error: ''
             };
@@ -36,6 +39,21 @@ import {
                 fetchingSmurfs: false,
                 error: action.payload
             };
+            case POST_SMURF_SUCCESS:
+                const newSmurf = {
+                    name: action.payload,
+                    age: '',
+                    height: '',
+                    id: Date.now()
+                }
+                return {...state, name:[...state.name, newSmurf]};
+            case POST_SMURF_FAIL:
+                return {
+                    ...state,
+                    addingSmurf: false,
+                    error: action.payload,
+                    fetchingSmurfs: false,
+                }
 
 
             default:

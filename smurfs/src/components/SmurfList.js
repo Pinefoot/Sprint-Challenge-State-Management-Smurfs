@@ -8,8 +8,8 @@ const SmurfList = props => {
     return (
         <div>
             <h2>Here there be dragons....err...smurfs.</h2>
-            <button onClick={()=>props.getSmurfs()}>This is the Gilgamesh Button to Capture Smurfs</button>
-            <div>
+            <button onClick={()=>props.getSmurfs()}>This is the Gilgamesh Button to Display Captured Smurfs</button>
+            
             {props.smurfs && props.smurfs.map(smurfy =>(
                 
                 <div key={smurfy.id}>
@@ -18,7 +18,7 @@ const SmurfList = props => {
                     <h4>Height: {smurfy.height}</h4>
                 </div>
             ))}
-            </div>
+            
         </div>
     )
 }
